@@ -1,7 +1,7 @@
 
 
-
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -37,7 +37,8 @@ public class Register {
     protected void tulisDataRegister() throws IOException
     {
         // membuka file database
-        FileWriter inputFile = new FileWriter("database.txt", true);
+        File dbFile = new File("AkunDB.txt");
+        FileWriter inputFile = new FileWriter(dbFile, true);
         BufferedWriter bufferInput = new BufferedWriter(inputFile);
         // menulis data ke dalam database
         bufferInput.write(this.username + "," + this.password);
