@@ -46,6 +46,11 @@ public class Akun {
     public String getPassword() {
         return this.password;
     }
+    /**
+     * Method untuk mengecek username dan password user
+     * @return login
+     * @throws IOException
+     */
 
     public boolean cekUsernameAndPassword() throws IOException{
         // membuka file
