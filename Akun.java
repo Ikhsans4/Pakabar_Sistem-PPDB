@@ -16,20 +16,18 @@ public class Akun {
     private String username;
     private String password;
     private String namaLengkap;
-    private String jenisKelamin;
+    private String jeniskelamin;
+    
 
     /**
      * Method constructor untuk class Akun.
      * @param username
      * @param password
-     * @param namaLengkap
-     * @param jenisKelamin
      */
-    public Akun(String username, String password, String namaLengkap, String jenisKelamin) {
+    public Akun(String username, String password) {
         this.username = username;
         this.password = password;
-        this.namaLengkap = namaLengkap;
-        this.jenisKelamin = jenisKelamin;
+       
     }
 
     /**
@@ -50,7 +48,7 @@ public class Akun {
         return this.password;
     }
 
-    /**
+     /**
      * Method getter nama lengkap user
      * @return namaLengkap
      */
@@ -61,14 +59,12 @@ public class Akun {
      * Method getter jenis kelamin user
      * @return jenisKelamin
      */
-    public String getJenisKelamin() {
-        return this.jenisKelamin;
+    public String getJeniskelamin() {
+        return jeniskelamin;
     }
 
-
-
     /**
-     * Method untuk mengecek username dan password user
+     * Method untuk mengecek username dan password user.
      * @return login
      * @throws IOException
      */
@@ -89,6 +85,8 @@ public class Akun {
             stringToken = new StringTokenizer(data, ",");
             String usernameDB = stringToken.nextToken();
             String passwordDB = stringToken.nextToken();
+            this.namaLengkap = stringToken.nextToken();
+            this.jeniskelamin = stringToken.nextToken();
 
             
             if (this.username.equals(usernameDB) && this.password.equals(passwordDB)) {
