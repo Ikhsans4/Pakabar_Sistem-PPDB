@@ -19,6 +19,9 @@ public class Akun {
     private String jeniskelamin;
     
 
+    public Akun(){
+        
+    }
     /**
      * Method constructor untuk class Akun.
      * @param username
@@ -70,23 +73,24 @@ public class Akun {
      */
     public boolean cekUsernameAndPassword() throws IOException{
         // membuka file
-        boolean login;
+        boolean login = false;
         FileReader inputFile = null;
         BufferedReader bufferInput = null;
         StringTokenizer stringToken;
-        inputFile = new FileReader("database.txt");
+        inputFile = new FileReader("AkunDB.txt");
         bufferInput = new BufferedReader(inputFile);
 
         String data;
+        data = bufferInput.readLine();
         
         // mengecek inputan user dengan data didalam database
-        while (true) {
-            data = bufferInput.readLine();
+        while (data != null) {
+            
             stringToken = new StringTokenizer(data, ",");
             String usernameDB = stringToken.nextToken();
             String passwordDB = stringToken.nextToken();
             this.namaLengkap = stringToken.nextToken();
-            this.jeniskelamin = stringToken.nextToken();
+            
 
             
             if (this.username.equals(usernameDB) && this.password.equals(passwordDB)) {
@@ -94,15 +98,12 @@ public class Akun {
                 break;
             } else {
                 login = false;
-                break;
             }
-
+            data = bufferInput.readLine();
         }
         // menutup buffer
         bufferInput.close();
         return login;
-
-
     }
 
 }
