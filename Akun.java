@@ -104,7 +104,7 @@ public class Akun {
         FileReader inputFile = null;
         BufferedReader bufferInput = null;
         StringTokenizer stringToken;
-        inputFile = new FileReader("database.txt");
+        inputFile = new FileReader("AkunDB.txt");
         bufferInput = new BufferedReader(inputFile);
         File tempFile = new File("akunAktif.txt");
         FileWriter outputFile = new FileWriter(tempFile);
@@ -120,12 +120,12 @@ public class Akun {
             String usernameDB = stringToken.nextToken();
             String passwordDB = stringToken.nextToken();
             this.namaLengkap = stringToken.nextToken();
-            this.jeniskelamin = stringToken.nextToken();
+            
 
             
             if (this.username.equals(usernameDB) && this.password.equals(passwordDB)) {
                 login = true;
-                bufferOutput.write(this.username + "," + this.password);
+                bufferOutput.write(this.username + "," + this.password + "," + this.namaLengkap);
                 bufferOutput.newLine();
                 bufferOutput.flush();
                 break;
@@ -139,6 +139,62 @@ public class Akun {
         bufferInput.close();
         return login;
 
+
+    }
+
+    public void readUserAktif() throws IOException{
+        // membuka file useraktif
+        FileReader akunAktif = new FileReader("akunAktif.txt");
+        BufferedReader bufferAkun =  new BufferedReader(akunAktif);
+        // membaca data dalam file
+        String data = bufferAkun.readLine();
+        // memisahkan data
+        StringTokenizer stringToken = new StringTokenizer(data, ",");
+        this.setUsername(stringToken.nextToken());
+        this.setPassword(stringToken.nextToken());
+        this.setNamaLengkap(stringToken.nextToken());
+        // menutup file
+        akunAktif.close();
+        bufferAkun.close();
+
+    }
+
+    public boolean editData() throws IOException{
+        // membuka file database
+        FileWriter inputFile = new FileWriter("database.txt", true);
+        BufferedWriter bufferInput = new BufferedWriter(inputFile);
+        // variabel boolean untuk mengecek username
+        boolean isExist = cekUsername(this.username);
+        // mengecek username sudah ada atau tidak
+        if (isExist) {
+            // menulis data ke dalam database
+            bufferInput.write(this.username + "," + this.password + "," + this.namaLengkap);
+            bufferInput.newLine();
+            bufferInput.flush();
+        }        
+
+        // menutup database
+        inputFile.close();
+        bufferInput.close();
+        return isExist;
+    }
+
+    protected boolean cekUsername(String keywords) throws IOException {
+
+        FileReader fileInput = new FileReader("database.txt");
+        BufferedReader bufferInput = new BufferedReader(fileInput);
+        String data = bufferInput.readLine();
+        boolean isExist = false;
+
+        while (data != null) {
+            isExist = true;
+            // menecek username ada atau tidak
+            isExist = isExist && data.toLowerCase().contains(keywords.toLowerCase());
+            // membaca baris selanjutnya
+            data = bufferInput.readLine();
+        }
+        bufferInput.close();
+        return isExist;
 
     }
 
