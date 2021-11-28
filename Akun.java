@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
@@ -17,11 +20,14 @@ public class Akun {
     private String password;
     private String namaLengkap;
     private String jeniskelamin;
+    /**
+     * Method constructor untuk class Akun.
+     */
+    public Akun(){
+
+    }
     
 
-    public Akun(){
-        
-    }
     /**
      * Method constructor untuk class Akun.
      * @param username
@@ -32,6 +38,13 @@ public class Akun {
         this.password = password;
        
     }
+    /**
+     * Method setter untuk mengatur username
+     * @param username
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     /**
      * Method getter untuk mendapatkan username
@@ -41,6 +54,13 @@ public class Akun {
     public String getUsername() {
         return this.username;
     }
+    /**
+     * Method setter untuk mengatur password
+     * @param password
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     /**
      * Method getter untuk mendapatkan password
@@ -49,6 +69,13 @@ public class Akun {
      */
     public String getPassword() {
         return this.password;
+    }
+    /**
+     * Method setter untuk mengatur namalengkap
+     * @param namaLengkap
+     */
+    public void setNamaLengkap(String namaLengkap) {
+        this.namaLengkap = namaLengkap;
     }
 
      /**
@@ -73,37 +100,46 @@ public class Akun {
      */
     public boolean cekUsernameAndPassword() throws IOException{
         // membuka file
-        boolean login = false;
+        boolean login;
         FileReader inputFile = null;
         BufferedReader bufferInput = null;
         StringTokenizer stringToken;
-        inputFile = new FileReader("AkunDB.txt");
+        inputFile = new FileReader("database.txt");
         bufferInput = new BufferedReader(inputFile);
+        File tempFile = new File("akunAktif.txt");
+        FileWriter outputFile = new FileWriter(tempFile);
+        BufferedWriter bufferOutput = new BufferedWriter(outputFile);
+
 
         String data;
-        data = bufferInput.readLine();
         
         // mengecek inputan user dengan data didalam database
-        while (data != null) {
-            
+        while (true) {
+            data = bufferInput.readLine();
             stringToken = new StringTokenizer(data, ",");
             String usernameDB = stringToken.nextToken();
             String passwordDB = stringToken.nextToken();
             this.namaLengkap = stringToken.nextToken();
-            
+            this.jeniskelamin = stringToken.nextToken();
 
             
             if (this.username.equals(usernameDB) && this.password.equals(passwordDB)) {
                 login = true;
+                bufferOutput.write(this.username + "," + this.password);
+                bufferOutput.newLine();
+                bufferOutput.flush();
                 break;
             } else {
                 login = false;
             }
-            data = bufferInput.readLine();
+
         }
         // menutup buffer
+        bufferOutput.close();
         bufferInput.close();
         return login;
+
+
     }
 
 }
