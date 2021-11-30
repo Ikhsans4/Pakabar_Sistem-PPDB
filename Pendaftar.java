@@ -1,11 +1,14 @@
+
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-public class Pendaftar extends Akun{
+public class Pendaftar extends Akun implements Data{
     String nama;
     String NISN;
     String alamat;
@@ -88,33 +91,57 @@ public class Pendaftar extends Akun{
         inputFile.close();
         bufferInput.close();
     }
-    /**
-     * Method cek user aktif digunakan untuk mengatur class akun 
-     * untuk dijadikan primary key dari data pendaftar
-     * @throws IOException
-     */
-    public void cekUserAktif() throws IOException{
-        // membuka file useraktif
-        FileReader akunAktif = new FileReader("akunAktif.txt");
-        BufferedReader bufferAkun =  new BufferedReader(akunAktif);
-        // membaca data dalam file
-        String data = bufferAkun.readLine();
-        // memisahkan data
-        StringTokenizer stringToken = new StringTokenizer(data, ",");
-        super.setUsername(stringToken.nextToken());
-        super.setPassword(stringToken.nextToken());
-        super.setNamaLengkap(stringToken.nextToken());
-        // menutup file
-        akunAktif.close();
-        bufferAkun.close();
+    public boolean updateData(String newNama, String newNISN, String newAlamat, String newKabupatenKota, String newJenisKelamin)throws IOException {
+        // membuka file database
+        File database = new File("database.txt");
+        FileReader inputFile = new FileReader(database);
+        BufferedReader bufferInput = new BufferedReader(inputFile);
+        boolean sukses = false;
 
+        // membuat file database sementara
+        File tempDB = new File("tempDB.txt");
+        FileWriter outputFile = new FileWriter(tempDB);
+        BufferedWriter bufferOutput = new BufferedWriter(outputFile);
+        // membaca useraktif
+        super.readUserAktif();
+
+        // membaca data dalam database
+        String data = bufferInput.readLine();
+        while (data != null) {
+            // memisahkan setiap data untuk mengecek username
+            StringTokenizer strToken = new StringTokenizer(data, ",");
+            String usernameDB = strToken.nextToken();
+            if (usernameDB.equals(super.getUsername())) {
+                bufferOutput.write(super.getUsername() + "," + newNama + "," + newNISN + "," + newAlamat + "," + newKabupatenKota + "," + newJenisKelamin);
+                sukses = true;
+            } else {
+                bufferOutput.write(data);
+            }
+            bufferOutput.newLine();
+            bufferOutput.flush();
+            data = bufferInput.readLine();
+        }
+
+        // menutup database
+        inputFile.close();
+        bufferInput.close();
+        outputFile.close();
+        bufferOutput.close();
+        // menghapus database
+        database.delete();
+        // merename tempdb ke database
+        tempDB.renameTo(database);
+        
+        return sukses;
+        
     }
+    
     public boolean cekUserDaftar() throws IOException{
         // membuka file database
         FileReader inputFile = new FileReader("database.txt");
         BufferedReader bufferInput = new BufferedReader(inputFile);
         // membuat boolean untuk mengecek data ada atau tidak
-        boolean isExist = false;
+        boolean isExist = true;
         String data = bufferInput.readLine();
         while (data != null) {
             // membaca data satu per satu
@@ -150,12 +177,19 @@ public class Pendaftar extends Akun{
                 this.alamat = stringToken.nextToken();
                 this.kabupatenKota = stringToken.nextToken();
                 this.jenisKelamin = stringToken.nextToken();
+                break;
             }
             // membaca baris baru
             data = bufferInput.readLine();
             
         }
         bufferInput.close();
+        inputFile.close();
+    }
+
+    @Override
+    public String getKecamatan() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
