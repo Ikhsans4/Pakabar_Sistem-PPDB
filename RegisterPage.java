@@ -63,7 +63,7 @@ public class RegisterPage extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(640, 470));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\muham\\Documents\\NetBeansProjects\\loginpage\\src\\Beta\\icon\\janko-ferlic-sfL_QOnmy00-unsplash(2).jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\muham\\Documents\\NetBeansProjects\\loginpage\\src\\icon\\janko-ferlic-sfL_QOnmy00-unsplash(2).jpg")); // NOI18N
         jLabel2.setLabelFor(this);
         jLabel2.setText("jlabel2");
         jLabel2.setPreferredSize(new java.awt.Dimension(317, 470));
@@ -227,7 +227,7 @@ public class RegisterPage extends javax.swing.JFrame {
                 .addComponent(signUpBottom)
                 .addGap(59, 59, 59))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
