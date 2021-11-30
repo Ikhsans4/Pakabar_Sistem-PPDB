@@ -1,9 +1,7 @@
 
 
 
-import Beta.PendaftaranPage;
-import Beta.AkunPage;
-import Beta.BerandaUserPage;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

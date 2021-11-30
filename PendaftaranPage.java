@@ -61,7 +61,7 @@ public class PendaftaranPage extends javax.swing.JFrame {
         lakiLakiRadioButton = new javax.swing.JRadioButton();
         perempuanRadioButton = new javax.swing.JRadioButton();
         daftarButton = new javax.swing.JButton();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        verifikasiDataCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(242, 237, 215));
@@ -189,8 +189,8 @@ public class PendaftaranPage extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox2.setBackground(new java.awt.Color(242, 237, 215));
-        jCheckBox2.setText("Data yang saya masukkan adalah benar");
+        verifikasiDataCheckBox.setBackground(new java.awt.Color(242, 237, 215));
+        verifikasiDataCheckBox.setText("Data yang saya masukkan adalah benar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -245,7 +245,7 @@ public class PendaftaranPage extends javax.swing.JFrame {
                                         .addComponent(kabupatenKotaField, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(kabupatenKotaSeparator5, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addComponent(jenisKelaminLabel)
-                                    .addComponent(jCheckBox2))))
+                                    .addComponent(verifikasiDataCheckBox))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -300,7 +300,7 @@ public class PendaftaranPage extends javax.swing.JFrame {
                     .addComponent(lakiLakiRadioButton)
                     .addComponent(perempuanRadioButton))
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox2)
+                .addComponent(verifikasiDataCheckBox)
                 .addGap(18, 18, 18)
                 .addComponent(daftarButton)
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -369,25 +369,26 @@ public class PendaftaranPage extends javax.swing.JFrame {
             Pendaftar akun = new Pendaftar(NamaLengkapField.getText(), NISNField.getText(), alamatField.getText(), kabupatenKotaField.getText(), jenisKelamin);
             akun.readUserAktif();
             boolean dataExist = akun.cekUserDaftar();
+            
             if(dataExist){
-                JOptionPane.showMessageDialog(rootPane, akun.getUsername());
+                if(verifikasiDataCheckBox.isSelected()){
+                JOptionPane.showMessageDialog(rootPane, "Pendaftaran Berhasil!");
                 akun.tulisDataPendaftar();
+                }
+                else{
+                    JOptionPane.showMessageDialog(rootPane, "verifikasi harus di centang!");
+                }
             }else{
-                JOptionPane.showMessageDialog(rootPane, "Pendaftaran sudah dilakukan!");
+                JOptionPane.showMessageDialog(rootPane, "Pendaftaran sudah dilakukan!");   
             }
+                
         }catch(HeadlessException | IOException ex){
 
         }
     }//GEN-LAST:event_daftarButtonActionPerformed
 
     private void daftarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarButtonMouseClicked
-//        try{
-//        Pendaftar akun = new Pendaftar(NamaLengkapField.getText(), NISNField.getText(), alamatField.getText(), kabupatenKotaField.getText(), "laki-laki");
-//        akun.cekUserAktif();
-//        akun.tulisDataPendaftar();
-//        }catch(Exception e){
-//            
-//        }
+
     }//GEN-LAST:event_daftarButtonMouseClicked
 
     private void lakiLakiRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lakiLakiRadioButtonActionPerformed
@@ -456,7 +457,6 @@ public class PendaftaranPage extends javax.swing.JFrame {
     private javax.swing.JButton daftarButton;
     private javax.swing.JLabel dataPendaftaranLabel;
     private javax.swing.JLabel iconLabel;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
@@ -469,5 +469,6 @@ public class PendaftaranPage extends javax.swing.JFrame {
     private javax.swing.JLabel logOutLabel;
     private javax.swing.JLabel pendaftaranLabel;
     private javax.swing.JRadioButton perempuanRadioButton;
+    private javax.swing.JCheckBox verifikasiDataCheckBox;
     // End of variables declaration//GEN-END:variables
 }

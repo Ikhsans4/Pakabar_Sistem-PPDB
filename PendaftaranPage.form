@@ -106,7 +106,7 @@
                                           <Component id="kabupatenKotaSeparator5" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="jenisKelaminLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="verifikasiDataCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -171,7 +171,7 @@
                       <Component id="perempuanRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                  <Component id="verifikasiDataCheckBox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="daftarButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="40" max="32767" attributes="0"/>
@@ -426,7 +426,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="daftarButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+        <Component class="javax.swing.JCheckBox" name="verifikasiDataCheckBox">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d7" green="ed" red="f2" type="rgb"/>
