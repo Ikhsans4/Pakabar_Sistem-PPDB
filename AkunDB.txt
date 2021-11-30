@@ -1,4 +1,4 @@
 Admin,admin, ADMIN
-ikhsan,1234,ikhsan
+ikhsan,123,ikhsan
 ikhsan3,123,Muh ikhsan
 123,123,123
