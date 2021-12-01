@@ -5,9 +5,9 @@ Program Sistem PPDB ini sangatlah simple dan tentunya mudah dimengerti oleh peng
 pada fitur data pendaftar user dapat memasukkan beberapa data diri seperti nama, nisn, alamat dan jenis kelamin apabila user sudah yakin dengan data yang sudah dimasukkan maka user dapat menekan opsi simpan apabila setelah disimpan data yang dimasukkan user ternyata ada yang keliru maka user dapat menekan opsi edit untuk mengubah atau memprbaiki data yang salah tersebut </br>
 # Anggota Kelompok
 <br>
-M. Ikhsan Fikri (2008107010020) CEO
-</br>Arif Munanda (20081070100)
-</br>Syifa Azhima (20081070100)
-</br>Zulfia Rahmi 
+M. Ikhsan Fikri (CEO)
+<br>Arif Munanda
+<br>Syifa Azhima 
+<br>Zulfia Rahmi 
   
  
