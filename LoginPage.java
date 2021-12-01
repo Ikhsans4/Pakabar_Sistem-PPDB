@@ -60,7 +60,7 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(635, 470));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\muham\\Documents\\NetBeansProjects\\loginpage\\src\\icon\\janko-ferlic-sfL_QOnmy00-unsplash(2).jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\muham\\Documents\\NetBeansProjects\\loginpage\\src\\icon\\alexandre-van-thuan-mr9FouttLGY-unsplash.jpg")); // NOI18N
         jLabel2.setText("jlabel2");
         jLabel2.setPreferredSize(new java.awt.Dimension(317, 470));
 
@@ -271,6 +271,12 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void signInBottomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInBottomActionPerformed
         BerandaUserPage landing = new BerandaUserPage();
+        BerandaAdminPage landingAdmin = null;
+        try {
+            landingAdmin = new BerandaAdminPage();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Akun cekAkun = new Akun(usernameField.getText(), passwordField.getText());
         boolean login = false;
         try {
@@ -279,6 +285,7 @@ public class LoginPage extends javax.swing.JFrame {
             if(login){
                 if(usernameField.getText().equals("Admin")){
                     JOptionPane.showMessageDialog(rootPane, "Selamat Datang Admin!");
+                    landingAdmin.setVisible(true);
                 }else{
                     JOptionPane.showMessageDialog(rootPane, "Login berhasil!");
                     landing.setVisible(true);

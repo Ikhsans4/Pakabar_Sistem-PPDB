@@ -2,6 +2,7 @@
 
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -432,7 +433,9 @@ public class DataPendaftarPage extends javax.swing.JFrame {
         int respon =  JOptionPane.showConfirmDialog(null, "Anda yakin?", "Log Out", OK_CANCEL_OPTION);
        
         if(respon == 0){
-             LoginPage login = new LoginPage();
+            File input = new File("akunAktif.txt");
+            input.delete();
+            LoginPage login = new LoginPage();
             login.setVisible(true);
             this.dispose();
         }
