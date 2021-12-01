@@ -6,8 +6,13 @@
 #Anggota Kelompok
 <br>
 M. Ikhsan Fikri (2008107010020) CEO
+</br>
+<br>
 Arif Munanda (20081070100)
+</br>
+<br>
 Syifa Azhima (20081070100)
+</br>
 Zulfia Rahmi 
   
  
