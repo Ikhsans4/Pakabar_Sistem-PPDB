@@ -1,1 +1,11 @@
-ikhsan,M. Ikhsan,123123,Darussalam,Banda Aceh,Laki-laki
+PaulinLailasari,Paulin Lailasari,12345,Jakarta,Jakarta,Perempuan
+NoviNamaga,Novi Namaga,12345,Jakarta,Jakarta,Perempuan
+VickyHasanah,Vicky Hasanah,12345,Jakarta,Jakarta,Perempuan
+BelindaHaryanti,Belinda Haryanti,12345,Jakarta,Jakarta,Perempuan
+WahyuBudiman,Wahyu Budiman,12345,Jakarta,Jakarta,Laki-laki
+BelindaNurdiyanti,Belinda Nurdiyanti,12345,Jakarta,Jakarta,Perempuan
+TitiMardhiyah ,Titi Mardhiyah ,12345,Jakarta,Jakarta,Perempuan
+GalangDabukke,Galang Dabukke,1234,Bandung,Bandung,Laki-laki
+PaulinLailasari,Paulin Lailasari,12345,Jakarta,Jakarta,Perempuan
+VictoriaWinarsih,Victoria Winarsih,123,Jakarta,Jakarta,Perempuan
+ikhsan1,ikhsan,123,Lingke,banda aceh,Laki-laki
