@@ -5,14 +5,9 @@
 <br> pada fitur data pendaftar user dapat memasukkan beberapa data diri seperti nama, nisn, alamat dan jenis kelamin apabila user sudah yakin dengan data yang sudah dimasukkan maka user dapat menekan opsi simpan apabila setelah disimpan data yang dimasukkan user ternyata ada yang keliru maka user dapat menekan opsi edit untuk mengubah atau memprbaiki data yang salah tersebut </br>
 #Anggota Kelompok
 <br>
-M. Ikhsan Fikri (2008107010020) CEO
-</br>
-<br>
-Arif Munanda (20081070100)
-</br>
-<br>
-Syifa Azhima (20081070100)
-</br>
-Zulfia Rahmi 
-  
+M. Ikhsan Fikri (2008107010020) CEO\n
+Arif Munanda (20081070100)\n
+Syifa Azhima (20081070100)\n
+Zulfia Rahmi \n
+ </br> 
  
