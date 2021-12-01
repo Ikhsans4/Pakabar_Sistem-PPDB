@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -12,7 +11,7 @@ import java.util.StringTokenizer;
  * 
  * @author pakabar
  * @since 21.11.18
- * @version 21.11.18
+ * @version 21.12.1
  */
 
 public class Register {
@@ -20,7 +19,6 @@ public class Register {
     private String username;
     private String password;
     private String namaLengkap;
-
 
     /**
      * Method constructor untuk class register tanpa parameter.
@@ -52,8 +50,6 @@ public class Register {
         return this.namaLengkap;
     }
 
-    
-
     /**
      * method untuk menulis data registrasi akun ke dalam database
      * 
@@ -72,7 +68,7 @@ public class Register {
             bufferInput.write(this.username + "," + this.password + "," + this.namaLengkap);
             bufferInput.newLine();
             bufferInput.flush();
-        }        
+        }
 
         // menutup database
         inputFile.close();
@@ -81,21 +77,26 @@ public class Register {
 
     }
 
+    /**
+     * Method untuk mengecek username telah digunakan atau belum
+     * @param keywords
+     * @return isExist
+     * @throws IOException
+     */
     protected boolean cekUsername(String keywords) throws IOException {
 
         FileReader fileInput = new FileReader("AkunDB.txt");
         BufferedReader bufferInput = new BufferedReader(fileInput);
         String data = bufferInput.readLine();
         boolean isExist = false;
-        
 
         while (data != null) {
             isExist = true;
             StringTokenizer strToken = new StringTokenizer(data, ",");
             // menecek username ada atau tidak
             isExist = isExist && (strToken.nextToken().equals(keywords));
-//            // mengecek data ada atau tidak untuk menghentikan looping
-            if(isExist){
+            // // mengecek data ada atau tidak untuk menghentikan looping
+            if (isExist) {
                 break;
             }
             // membaca baris selanjutnya

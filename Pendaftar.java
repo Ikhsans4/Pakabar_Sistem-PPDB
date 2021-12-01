@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -7,23 +6,31 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
+/**
+ * Class Pendaftar untuk mengelola akun pendaftar sistem PPDB
+ * 
+ * @author pakabar
+ * @since 21.11.18
+ * @version 21.12.1
+ */
 
-public class Pendaftar extends Akun implements Data{
+public class Pendaftar extends Akun implements Data {
     String nama;
     String NISN;
     String alamat;
     String kabupatenKota;
     String jenisKelamin;
-    
+
     /**
      * Method constructor class pendaftar
      */
     public Pendaftar() {
-        
+
     }
-    
+
     /**
      * Method constructor class pendaftar
+     * 
      * @param nama
      * @param NISN
      * @param alamat
@@ -37,53 +44,66 @@ public class Pendaftar extends Akun implements Data{
         this.kabupatenKota = kabupatenKota;
         this.jenisKelamin = jenisKelamin;
     }
+
     /**
      * Method getter untuk mengambil nama
+     * 
      * @return nama
      */
     public String getNama() {
         return this.nama;
     }
+
     /**
      * Method getter untuk mengambil NISN
+     * 
      * @return NISN
      */
     public String getNISN() {
         return this.NISN;
     }
+
     /**
      * Method getter untuk mengambil alamat
+     * 
      * @return alamat
      */
     public String getAlamat() {
         return this.alamat;
     }
+
     /**
      * Method getter untuk mengambil kabupatenkota
+     * 
      * @return kabupatenKota
      */
     public String getKabupatenKota() {
         return this.kabupatenKota;
     }
+
     /**
      * Method getter untuk mengambil jeniskelamin
+     * 
      * @return jenisKelamin
      */
     public String getJenisKelamin() {
         return this.jenisKelamin;
     }
+
     /**
      * Method untuk menulis data pendaftar kedalam database
+     * 
      * @throws IOException
      */
-    public void tulisDataPendaftar() throws IOException{
+    public void tulisDataPendaftar() throws IOException {
         // membuka file database
-//        File input = new File("database.txt");
+        // File input = new File("database.txt");
         FileWriter inputFile = new FileWriter("database.txt", true);
         BufferedWriter bufferInput = new BufferedWriter(inputFile);
 
         // menulis data ke dalam database
-        bufferInput.write(super.getUsername() + "," + this.nama + "," + this.NISN + "," + this.alamat + "," + this.kabupatenKota + "," + this.jenisKelamin);
+        bufferInput.write(super.getUsername() + "," + this.nama + "," + this.NISN + "," + this.alamat + ","
+                + this.kabupatenKota + "," + this.jenisKelamin);
         bufferInput.newLine();
         bufferInput.flush();
 
@@ -91,7 +111,18 @@ public class Pendaftar extends Akun implements Data{
         inputFile.close();
         bufferInput.close();
     }
-    public boolean updateData(String newNama, String newNISN, String newAlamat, String newKabupatenKota, String newJenisKelamin)throws IOException {
+    /**
+     * Method untuk mengupdate data pendaftaran pendaftar
+     * @param newNama
+     * @param newNISN
+     * @param newAlamat
+     * @param newKabupatenKota
+     * @param newJenisKelamin
+     * @return sukses
+     * @throws IOException
+     */
+    public boolean updateData(String newNama, String newNISN, String newAlamat, String newKabupatenKota,
+            String newJenisKelamin) throws IOException {
         // membuka file database
         File database = new File("database.txt");
         FileReader inputFile = new FileReader(database);
@@ -112,7 +143,8 @@ public class Pendaftar extends Akun implements Data{
             StringTokenizer strToken = new StringTokenizer(data, ",");
             String usernameDB = strToken.nextToken();
             if (usernameDB.equals(super.getUsername())) {
-                bufferOutput.write(super.getUsername() + "," + newNama + "," + newNISN + "," + newAlamat + "," + newKabupatenKota + "," + newJenisKelamin);
+                bufferOutput.write(super.getUsername() + "," + newNama + "," + newNISN + "," + newAlamat + ","
+                        + newKabupatenKota + "," + newJenisKelamin);
                 sukses = true;
             } else {
                 bufferOutput.write(data);
@@ -131,12 +163,16 @@ public class Pendaftar extends Akun implements Data{
         database.delete();
         // merename tempdb ke database
         tempDB.renameTo(database);
-        
+
         return sukses;
-        
+
     }
-    
-    public boolean cekUserDaftar() throws IOException{
+    /**
+     * Method untuk mengecek user telah pernah melakukan pendaftaran atau belum
+     * @return isExist
+     * @throws IOException
+     */
+    public boolean cekUserDaftar() throws IOException {
         // membuka file database
         FileReader inputFile = new FileReader("database.txt");
         BufferedReader bufferInput = new BufferedReader(inputFile);
@@ -149,19 +185,22 @@ public class Pendaftar extends Akun implements Data{
             String userDB = stringToken.nextToken();
             if (userDB.equals(super.getUsername())) {
                 isExist = false;
-            }else {
+            } else {
                 isExist = true;
-        
+
             }
             // membaca baris baru
             data = bufferInput.readLine();
-            
+
         }
         bufferInput.close();
         return isExist;
     }
-    
-    public void readData() throws IOException{
+    /**
+     * Method untuk membaca file dari database
+     * @throws IOException
+     */
+    public void readData() throws IOException {
         // membuka file database
         FileReader inputFile = new FileReader("database.txt");
         BufferedReader bufferInput = new BufferedReader(inputFile);
@@ -181,17 +220,12 @@ public class Pendaftar extends Akun implements Data{
             }
             // membaca baris baru
             data = bufferInput.readLine();
-            
+
         }
         bufferInput.close();
         inputFile.close();
     }
 
-    @Override
-    public String getKecamatan() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
 
 }
