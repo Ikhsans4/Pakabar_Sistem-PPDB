@@ -117,13 +117,12 @@ public class Akun {
         StringTokenizer stringToken;
         inputFile = new FileReader("AkunDB.txt");
         bufferInput = new BufferedReader(inputFile);
-        
 
         String data = bufferInput.readLine();
 
         // mengecek inputan user dengan data didalam database
         while (data != null) {
-            
+
             stringToken = new StringTokenizer(data, ",");
             String usernameDB = stringToken.nextToken();
             String passwordDB = stringToken.nextToken();
@@ -138,12 +137,20 @@ public class Akun {
 
         }
         // menutup buffer
-        
+
         bufferInput.close();
         return login;
 
     }
+
+    /**
+     * method untuk menulis user aktif ke dalam file akun aktif
+     * 
+     * @throws IOException
+     */
+
     protected void tulisAkunAktif() throws IOException {
+        // membuat file akun aktif
         File tempFile = new File("akunAktif.txt");
         FileWriter outputFile = new FileWriter(tempFile);
         BufferedWriter bufferOutput = new BufferedWriter(outputFile);
@@ -178,9 +185,18 @@ public class Akun {
 
     }
 
+    /**
+     * Method untuk mengedit akun user
+     * 
+     * @param newUsername
+     * @param newPassword
+     * @param newNamaLengkap
+     * @return isExist
+     * @throws IOException
+     */
+
     public boolean editDataAkun(String newUsername, String newPassword, String newNamaLengkap) throws IOException {
-        
-        
+
         // mengambil ambil database original
         File database = new File("AkunDB.txt");
         FileReader fileInput = new FileReader(database);
@@ -236,6 +252,12 @@ public class Akun {
         return isExist;
     }
 
+    /**
+     * Method untuk mengecek username telah digunakan atau belum oleh userlain
+     * @param keywords
+     * @return isExist
+     * @throws IOException
+     */
     protected boolean cekUsername(String keywords) throws IOException {
 
         FileReader fileInput = new FileReader("database.txt");
@@ -249,7 +271,7 @@ public class Akun {
             isExist = isExist && data.contains(keywords);
             // mengecek untuk menghentikan looping
             if (isExist) {
-                if(this.username.contains(keywords)){
+                if (this.username.contains(keywords)) {
                     isExist = false;
                 }
                 break;
