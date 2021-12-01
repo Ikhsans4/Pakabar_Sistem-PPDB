@@ -63,9 +63,10 @@ public class RegisterPage extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(640, 470));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\muham\\Documents\\NetBeansProjects\\loginpage\\src\\icon\\janko-ferlic-sfL_QOnmy00-unsplash(2).jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\muham\\Documents\\NetBeansProjects\\loginpage\\src\\icon\\alexandre-van-thuan-mr9FouttLGY-unsplash.jpg")); // NOI18N
         jLabel2.setLabelFor(this);
         jLabel2.setText("jlabel2");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel2.setPreferredSize(new java.awt.Dimension(317, 470));
 
         RegisterLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -226,9 +227,7 @@ public class RegisterPage extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(signUpBottom)
                 .addGap(59, 59, 59))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -240,8 +239,8 @@ public class RegisterPage extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
